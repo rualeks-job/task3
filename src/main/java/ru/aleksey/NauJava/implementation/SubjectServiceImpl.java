@@ -12,16 +12,15 @@ import ru.aleksey.NauJava.services.SubjectService;
 public class SubjectServiceImpl implements SubjectService {
     private final SubjectRepository subjectRepository;
 
-    private final String appName;
-    public final String appVersion;
+    @Value("${app.name}")
+    private String appName;
+
+    @Value("${app.version}")
+    public String appVersion;
 
     @Autowired
-    public SubjectServiceImpl(SubjectRepository subjectRepository,
-                              @Value("${app.name}") String appName,
-                              @Value("${app.version}") String appVersion) {
+    public SubjectServiceImpl(SubjectRepository subjectRepository) {
         this.subjectRepository = subjectRepository;
-        this.appVersion = appVersion;
-        this.appName = appName;
     }
 
     @Override
@@ -47,14 +46,18 @@ public class SubjectServiceImpl implements SubjectService {
 
     @Override
     public void updateTeacherById(Long id, String teacher) {
+        Subject newSubject = new Subject();
         Subject oldSubject = subjectRepository.read(id);
-        oldSubject.setTeacher(teacher);
-        subjectRepository.update(oldSubject);
+        newSubject.setId(id);
+        newSubject.setTeacher(teacher);
+        newSubject.setDuration(oldSubject.getDuration());
+        newSubject.setTitle(oldSubject.getTitle());
+        subjectRepository.update(newSubject);
     }
 
     @PostConstruct
     public void init() {
         System.out.println("Приложение: " + appName);
-        System.out.println("Версия приложения: " + appVersion);
+        System.out.println("Верси приложения: " + appVersion);
     }
 }

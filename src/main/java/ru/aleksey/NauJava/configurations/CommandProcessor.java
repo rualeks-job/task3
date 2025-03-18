@@ -24,9 +24,7 @@ public class CommandProcessor {
 
             case "delete" -> subjectService.deleteSubjectById(Long.valueOf(cmd[1]));
 
-            default -> {
-                System.out.println("Введена неизвестная команда");
-            }
+            default -> System.out.println("Введена неизвестная команда");
         }
     }
 }
