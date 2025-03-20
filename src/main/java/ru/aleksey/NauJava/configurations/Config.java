@@ -10,8 +10,12 @@ import java.util.Scanner;
 @Configuration
 public class Config {
 
+    private final CommandProcessor commandProcessor;
+
     @Autowired
-    private CommandProcessor commandProcessor;
+    public Config(CommandProcessor commandProcessor) {
+        this.commandProcessor = commandProcessor;
+    }
 
     @Bean
     public CommandLineRunner commandLineRunner() {

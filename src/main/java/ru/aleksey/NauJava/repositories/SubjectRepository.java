@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import ru.aleksey.NauJava.objects.Subject;
 
 import java.util.List;
+import java.util.Objects;
 
 @Component
 public class SubjectRepository implements CrudRepository<Subject, Long> {
@@ -23,18 +24,22 @@ public class SubjectRepository implements CrudRepository<Subject, Long> {
 
     @Override
     public Subject read(Long aLong) {
-        return subjectContainer.stream().filter(subject -> subject.getId() == aLong).findFirst().get();
+        return subjectContainer
+                .stream()
+                .filter(subject -> Objects.equals(subject.getId(), aLong))
+                .findFirst()
+                .orElseThrow();
     }
 
     @Override
     public void update(Subject entry) {
-        Subject subject = subjectContainer.stream().filter(it -> it.getId() == entry.getId()).findFirst().get();
+        Subject subject = read(entry.getId());
         subjectContainer.set(subjectContainer.indexOf(subject), entry);
     }
 
     @Override
     public void delete(Long aLong) {
-        Subject subject = subjectContainer.stream().filter(it -> it.getId() == aLong).findFirst().get();
+        Subject subject = read(aLong);
         subjectContainer.remove(subject);
     }
 }

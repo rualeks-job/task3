@@ -1,12 +1,12 @@
 package ru.aleksey.NauJava.objects;
 
 public class Subject {
-    private long id;
+    private Long id;
     private String title;
     private String teacher;
     private Double duration;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
