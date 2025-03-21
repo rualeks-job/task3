@@ -32,6 +32,7 @@ public class Config {
                     commandProcessor.processorCommand(input);
                 }
             }
+            commandProcessor.executeCurlCommand("curl -X POST http://localhost:8082/actuator/shutdown");
         };
     }
 
