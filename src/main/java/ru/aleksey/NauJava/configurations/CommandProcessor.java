@@ -24,7 +24,20 @@ public class CommandProcessor {
 
             case "delete" -> subjectService.deleteSubjectById(Long.valueOf(cmd[1]));
 
-            default -> System.out.println("Введена неизвестная команда");
+            default -> {
+                System.out.println("Введена неизвестная команда");
+            }
+        }
+    }
+
+    public void executeCurlCommand(String command) {
+        try {
+            Process process = new ProcessBuilder(command.split(" "))
+                    .redirectErrorStream(true)
+                    .start();
+            process.waitFor();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
