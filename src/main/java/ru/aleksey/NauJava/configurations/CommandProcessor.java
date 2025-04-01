@@ -29,15 +29,4 @@ public class CommandProcessor {
             }
         }
     }
-
-    public void executeCurlCommand(String command) {
-        try {
-            Process process = new ProcessBuilder(command.split(" "))
-                    .redirectErrorStream(true)
-                    .start();
-            process.waitFor();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 }

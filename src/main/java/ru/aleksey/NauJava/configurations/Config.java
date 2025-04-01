@@ -2,8 +2,12 @@ package ru.aleksey.NauJava.configurations;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import ru.aleksey.NauJava.NauJavaApplication;
 
 import java.util.Scanner;
 
@@ -11,10 +15,12 @@ import java.util.Scanner;
 public class Config {
 
     private final CommandProcessor commandProcessor;
+    private final ApplicationContext applicationContext;
 
     @Autowired
-    public Config(CommandProcessor commandProcessor) {
+    public Config(CommandProcessor commandProcessor, ApplicationContext applicationContext) {
         this.commandProcessor = commandProcessor;
+        this.applicationContext = applicationContext;
     }
 
     @Bean
@@ -32,7 +38,7 @@ public class Config {
                     commandProcessor.processorCommand(input);
                 }
             }
-            commandProcessor.executeCurlCommand("curl -X POST http://localhost:8082/actuator/shutdown");
+            SpringApplication.exit(applicationContext);
         };
     }
 
