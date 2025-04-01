@@ -3,7 +3,7 @@ package ru.aleksey.NauJava.objects;
 import jakarta.persistence.*;
 
 @Entity
-@Table
+@Table(name = "Subjects")
 public class Subject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
