@@ -1,17 +1,48 @@
 package ru.aleksey.NauJava.objects;
 
-public class Subject {
-    private Long id;
-    private String title;
-    private String teacher;
-    private Double duration;
+import jakarta.persistence.*;
 
-    public Long getId() {
-        return id;
+import java.util.List;
+
+@Entity
+@Table
+public class Subject {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column
+    private String title;
+    @OneToOne
+    private Teacher teacher;
+    @Column
+    private Double duration;
+    @OneToMany
+    private List<Grade> gradeList;
+
+    public Subject() {
+    }
+
+    public Subject(String title, Teacher teacher, Double duration, List<Grade> gradeList) {
+        this.title = title;
+        this.teacher = teacher;
+        this.duration = duration;
+        this.gradeList = gradeList;
+    }
+
+    public void setGradeList(List<Grade> gradeList) {
+        this.gradeList = gradeList;
+    }
+
+    public List<Grade> getGradeList() {
+        return gradeList;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getTitle() {
@@ -22,11 +53,11 @@ public class Subject {
         this.title = title;
     }
 
-    public String getTeacher() {
+    public Teacher getTeacher() {
         return teacher;
     }
 
-    public void setTeacher(String teacher) {
+    public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
     }
 
