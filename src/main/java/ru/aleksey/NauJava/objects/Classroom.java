@@ -10,11 +10,12 @@ public class Classroom {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(unique = true)
+    @Column(unique = true, name = "title")
     private String title;
-    @OneToMany
+    @OneToMany(mappedBy = "classroom", fetch = FetchType.LAZY)
     private List<Student> studentList;
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "teacher_id")
     private Teacher teacher;
 
     public Classroom() {

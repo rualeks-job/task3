@@ -6,5 +6,5 @@ import ru.aleksey.NauJava.objects.Grade;
 import java.util.List;
 
 public interface GradeRepository extends CrudRepository<Grade, Long> {
-    List<Grade> findAllGradeBySubjectTitle(String title);
+    List<Grade> findAllByStudentNameAndStudentSurname(String name,String surname);
 }

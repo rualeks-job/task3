@@ -2,39 +2,27 @@ package ru.aleksey.NauJava.objects;
 
 import jakarta.persistence.*;
 
-import java.util.List;
-
 @Entity
 @Table
 public class Subject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column
+    @Column(name = "title")
     private String title;
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "author_id")
     private Teacher teacher;
-    @Column
+    @Column(name = "duration")
     private Double duration;
-    @OneToMany
-    private List<Grade> gradeList;
 
     public Subject() {
     }
 
-    public Subject(String title, Teacher teacher, Double duration, List<Grade> gradeList) {
+    public Subject(String title, Teacher teacher, Double duration) {
         this.title = title;
         this.teacher = teacher;
         this.duration = duration;
-        this.gradeList = gradeList;
-    }
-
-    public void setGradeList(List<Grade> gradeList) {
-        this.gradeList = gradeList;
-    }
-
-    public List<Grade> getGradeList() {
-        return gradeList;
     }
 
     public void setId(Long id) {

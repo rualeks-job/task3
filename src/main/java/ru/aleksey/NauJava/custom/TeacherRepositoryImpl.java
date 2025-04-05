@@ -31,7 +31,7 @@ public class TeacherRepositoryImpl implements TeacherRepositoryCustom {
     }
 
     @Override
-    public String findTeacherNameByClassroomTitle(String title) {
+    public String findNameByClassroomTitle(String title) {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<String> criteriaQuery = criteriaBuilder.createQuery(String.class);
 

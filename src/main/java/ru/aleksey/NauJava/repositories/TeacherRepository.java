@@ -9,5 +9,5 @@ public interface TeacherRepository extends CrudRepository<Teacher, Long> {
     Teacher findByNameAndSurname(String name, String surname);
 
     @Query("SELECT s.name from Teacher s join s.classroom c where c.title = :title")
-    String findTeacherNameByClassroomTitle(@Param("title") String title);
+    String findNameByClassroomTitle(@Param("title") String title);
 }

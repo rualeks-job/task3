@@ -5,6 +5,6 @@ import ru.aleksey.NauJava.objects.Classroom;
 
 public interface ClassroomRepository extends CrudRepository<Classroom, Long> {
 
-    Classroom findClassroomById(Long id);
-    Classroom findClassroomByTitle(String title);
+//    Classroom findClassroomById(Long id);
+    Classroom findByTitle(String title);
 }

@@ -8,13 +8,13 @@ public class Teacher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne
+    @OneToOne(mappedBy = "teacher", fetch = FetchType.LAZY)
     private Subject subject;
-    @Column
+    @Column(name = "name")
     private String name;
-    @Column
+    @Column(name = "surname")
     private String surname;
-    @OneToOne
+    @OneToOne(mappedBy = "teacher", fetch = FetchType.LAZY)
     private Classroom classroom;
 
     public Teacher(Subject subject, String name, String surname, Classroom classroom) {

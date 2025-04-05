@@ -9,5 +9,6 @@ import java.util.List;
 
 public interface StudentRepository extends CrudRepository<Student, Long> {
     @Query("SELECT s.name from Student s join s.classroom c where c.title = :title")
-    List<String> findStudentNameByClassroomTitle(@Param("title") String title);
+    List<String> findAllStudentNamesByClassroomTitle(@Param("title") String title);
+    Student findByNameAndSurname(String name, String surname);
 }
