@@ -4,7 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import ru.aleksey.NauJava.objects.Subject;
 
-@RepositoryRestResource
+@RepositoryRestResource(path = "students")
 public interface SubjectRepository extends CrudRepository<Subject, Long> {
-    Subject findByTitle(String title);
 }
