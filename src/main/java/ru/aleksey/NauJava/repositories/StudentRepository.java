@@ -8,7 +8,7 @@ import ru.aleksey.NauJava.objects.Student;
 
 import java.util.List;
 
-@RepositoryRestResource
+@RepositoryRestResource(path = "students")
 public interface StudentRepository extends CrudRepository<Student, Long> {
     @Query("SELECT s.name from Student s join s.classroom c where c.title = :title")
     List<String> findAllStudentNamesByClassroomTitle(@Param("title") String title);

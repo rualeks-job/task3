@@ -9,7 +9,7 @@ import ru.aleksey.NauJava.objects.Subject;
 import ru.aleksey.NauJava.repositories.SubjectRepository;
 
 @Controller
-@RequestMapping("/custom/subjects/view")
+@RequestMapping("/custom/subject/view")
 public class SubjectControllerView {
     private final SubjectRepository subjectRepository;
 
@@ -20,8 +20,8 @@ public class SubjectControllerView {
 
     @GetMapping("/list")
     public String subjectListView(Model model) {
-        Iterable<Subject> subjects = subjectRepository.findAll();
-        model.addAttribute("subjects", subjects);
+        Iterable<Subject> subject = subjectRepository.findAll();
+        model.addAttribute("subjects", subject);
         return "subjectList";
     }
 }

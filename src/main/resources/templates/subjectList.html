@@ -1,23 +1,75 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
     <title>Subject List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden; /* Ensures rounded corners are respected */
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #e9ecef;
+            transition: background-color 0.3s ease;
+        }
+    </style>
 </head>
 <body>
 <h1>Subject List</h1>
-<table border="1">
+
+<table border="0">
+    <thead>
     <tr>
         <th>ID</th>
         <th>Title</th>
         <th>Teacher</th>
         <th>Duration</th>
     </tr>
+    </thead>
+    <tbody>
     <tr th:each="subject : ${subjects}">
         <td th:text="${subject.id}"></td>
         <td th:text="${subject.title}"></td>
         <td th:text="${subject.teacher}"></td>
         <td th:text="${subject.duration}"></td>
     </tr>
+    </tbody>
 </table>
 </body>
 </html>

@@ -7,6 +7,5 @@ import ru.aleksey.NauJava.objects.Classroom;
 @RepositoryRestResource
 public interface ClassroomRepository extends CrudRepository<Classroom, Long> {
 
-//    Classroom findClassroomById(Long id);
-    Classroom findByTitle(String title);
+    Classroom findClassroomByTitle(String title);
 }

@@ -1,8 +1,8 @@
 package ru.aleksey.NauJava.configurations;
 
-public class Exception {
+public class ExceptionDto {
     private String message;
-    private Exception(String message){
+    private ExceptionDto(String message){
         this.message = message;
     }
     public String getMessage()
@@ -13,12 +13,12 @@ public class Exception {
     {
         this.message = message;
     }
-    public static Exception create(Throwable e)
+    public static ExceptionDto create(Throwable e)
     {
-        return new Exception(e.getMessage());
+        return new ExceptionDto(e.getMessage());
     }
-    public static Exception create(String message)
+    public static ExceptionDto create(String message)
     {
-        return new Exception(message);
+        return new ExceptionDto(message);
     }
 }
