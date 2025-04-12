@@ -10,16 +10,17 @@ import ru.aleksey.NauJava.configurations.ExceptionDto;
 
 @ControllerAdvice
 public class ExceptionControllerAdvice {
-    @ExceptionHandler(java.lang.Exception.class)
+    @ExceptionHandler(Exception.class)
     @ResponseBody
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public ExceptionDto exception(java.lang.Exception e){
+    public ExceptionDto exception(Exception e) {
         return ExceptionDto.create(e);
     }
+
     @ExceptionHandler(ResourceNotFoundException.class)
     @ResponseBody
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ExceptionDto exception(ResourceNotFoundException e){
+    public ExceptionDto exception(ResourceNotFoundException e) {
         return ExceptionDto.create(e);
     }
 }
