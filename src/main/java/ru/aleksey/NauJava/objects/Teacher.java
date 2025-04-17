@@ -27,6 +27,10 @@ public class Teacher {
     public Teacher() {
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public Classroom getaClass() {
         return classroom;
     }

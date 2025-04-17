@@ -30,6 +30,10 @@ public class Student {
         this.gradeList = gradeList;
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public List<Grade> getGradeList() {
         return gradeList;
     }

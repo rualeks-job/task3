@@ -49,7 +49,6 @@ public class TeacherRepositoryCustomTest {
 
         Teacher findTeacher = teacherRepository.findByNameAndSurname(teacherName, teacherSurname);
 
-        Teacher findTeacher = teacherRepositoryCustom.findByNameAndSurname(teacherName, teacherSurname);
         Assertions.assertNotNull(findTeacher, "Учитель не найден");
         Assertions.assertEquals(findTeacher.getId(), teacher.getId());
     }

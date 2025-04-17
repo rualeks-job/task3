@@ -25,6 +25,10 @@ public class Subject {
         this.duration = duration;
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public String getTitle() {
         return title;
     }
