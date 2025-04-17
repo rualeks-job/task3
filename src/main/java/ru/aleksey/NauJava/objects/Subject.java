@@ -1,17 +1,36 @@
 package ru.aleksey.NauJava.objects;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table
 public class Subject {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "title")
     private String title;
-    private String teacher;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "author_id")
+    private Teacher teacher;
+    @Column(name = "duration")
     private Double duration;
 
-    public Long getId() {
-        return id;
+    public Subject() {
+    }
+
+    public Subject(String title, Teacher teacher, Double duration) {
+        this.title = title;
+        this.teacher = teacher;
+        this.duration = duration;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getTitle() {
@@ -22,11 +41,11 @@ public class Subject {
         this.title = title;
     }
 
-    public String getTeacher() {
+    public Teacher getTeacher() {
         return teacher;
     }
 
-    public void setTeacher(String teacher) {
+    public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
     }
 
