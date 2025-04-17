@@ -3,9 +3,11 @@ package ru.aleksey.NauJava.repositories;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import ru.aleksey.NauJava.custom.TeacherRepositoryCustom;
 import ru.aleksey.NauJava.objects.Teacher;
 
+@RepositoryRestResource
 public interface TeacherRepository extends CrudRepository<Teacher, Long>, TeacherRepositoryCustom {
     Teacher findByNameAndSurname(String name, String surname);
 

@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.transaction.annotation.Transactional;
 import ru.aleksey.NauJava.objects.*;
 import ru.aleksey.NauJava.repositories.*;
@@ -94,11 +95,9 @@ public class StudentRepositoryTest {
         List<Grade> gradeList = student.getGradeList();
 
         Assertions.assertTrue(gradeRepository.findById(gradeList.getFirst().getId()).isPresent());
-        try {
-            studentService.deleteByNameAndSurname(studentName, studentSurname);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Assertions.assertThrows(InvalidDataAccessApiUsageException.class, () ->
+                studentService.deleteByNameAndSurname(studentName, studentSurname)
+        );
 
         Optional<Student> foundStudent = studentRepository.findById(student.getId());
         Assertions.assertTrue(foundStudent.isPresent());
