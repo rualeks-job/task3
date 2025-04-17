@@ -26,14 +26,6 @@ public class Grade {
         this.student = student;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public Integer getGrade() {
         return grade;
     }

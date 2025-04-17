@@ -58,12 +58,4 @@ public class Teacher {
     public void setSurname(String surname) {
         this.surname = surname;
     }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
 }
