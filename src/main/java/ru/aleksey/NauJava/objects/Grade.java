@@ -30,10 +30,6 @@ public class Grade {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public Integer getGrade() {
         return grade;
     }
