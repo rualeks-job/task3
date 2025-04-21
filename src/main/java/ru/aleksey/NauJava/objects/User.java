@@ -2,6 +2,8 @@ package ru.aleksey.NauJava.objects;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "Users")
 public class User {
@@ -16,13 +18,17 @@ public class User {
     private String firstName;
     @Column(name = "lastname")
     private String lastName;
-    @Column(name = "roles")
-    private String roles;
+    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"))
+    @Column(name = "role", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Set<Role> roles;
 
     public User() {
     }
 
-    public User(String username, String password, String firstName, String lastName, String roles) {
+    public User(String username, String password, String firstName, String lastName, Set<Role> roles) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
@@ -30,11 +36,11 @@ public class User {
         this.roles = roles;
     }
 
-    public String getRoles() {
+    public Set<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(String roles) {
+    public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
 

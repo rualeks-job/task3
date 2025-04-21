@@ -21,7 +21,7 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((auth) -> auth
-                        .requestMatchers("/login/", "/registration/")
+                        .requestMatchers("/login", "/registration")
                         .permitAll()
                         .requestMatchers("/swagger-ui/**").hasRole("ADMIN")
                         .anyRequest().authenticated())
