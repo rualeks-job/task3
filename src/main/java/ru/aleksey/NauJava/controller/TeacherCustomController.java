@@ -1,13 +1,12 @@
 package ru.aleksey.NauJava.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import ru.aleksey.NauJava.objects.Teacher;
 import ru.aleksey.NauJava.repositories.TeacherRepository;
 
-@Controller
-@RequestMapping("/rest/teachers")
+@RestController
+@RequestMapping("/rest")
 public class TeacherCustomController {
 
     private final TeacherRepository teacherRepository;
