@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
-import ru.aleksey.NauJava.custom.TeacherRepositoryCustom;
 import ru.aleksey.NauJava.objects.Classroom;
 import ru.aleksey.NauJava.objects.Teacher;
 import ru.aleksey.NauJava.repositories.ClassroomRepository;
@@ -50,7 +49,6 @@ public class TeacherRepositoryCustomTest {
 
         Teacher findTeacher = teacherRepository.findByNameAndSurname(teacherName, teacherSurname);
 
-        Teacher findTeacher = teacherRepositoryCustom.findByNameAndSurname(teacherName, teacherSurname);
         Assertions.assertNotNull(findTeacher, "Учитель не найден");
         Assertions.assertEquals(findTeacher.getId(), teacher.getId());
     }

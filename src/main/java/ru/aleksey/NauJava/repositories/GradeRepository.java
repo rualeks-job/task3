@@ -6,7 +6,7 @@ import ru.aleksey.NauJava.objects.Grade;
 
 import java.util.List;
 
-@RepositoryRestResource(path = "grades")
+@RepositoryRestResource
 public interface GradeRepository extends CrudRepository<Grade, Long> {
     List<Grade> findAllByStudentNameAndStudentSurname(String name,String surname);
 }

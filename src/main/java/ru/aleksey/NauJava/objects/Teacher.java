@@ -27,6 +27,10 @@ public class Teacher {
     public Teacher() {
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public Classroom getaClass() {
         return classroom;
     }
@@ -57,13 +61,5 @@ public class Teacher {
 
     public void setSurname(String surname) {
         this.surname = surname;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
     }
 }

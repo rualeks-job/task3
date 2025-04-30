@@ -1,11 +1,12 @@
 package ru.aleksey.NauJava.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import ru.aleksey.NauJava.objects.Teacher;
 import ru.aleksey.NauJava.repositories.TeacherRepository;
 
-@RestController
+@Controller
 @RequestMapping("/rest/teachers")
 public class TeacherCustomController {
 
@@ -21,7 +22,7 @@ public class TeacherCustomController {
         return teacherRepository.findByNameAndSurname(name, surname);
     }
 
-    @GetMapping("//classrooms/{title}/teacher")
+    @GetMapping("/classrooms/{title}/teacher")
     public String findTeacherNameByClassroomTitle(@PathVariable String title) {
         return teacherRepository.findNameByClassroomTitle(title);
     }
